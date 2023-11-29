@@ -32,7 +32,7 @@ export default props => {
         <View style={styles.containerLogo}>
                 <Image
                     source={require('../assets/logo_secprocess.png')}
-                    style={{ width: '50%'}}
+                    style={{ width: '30%'}}
                     resizeMode="contain" />
             </View>
     </View>  
@@ -42,49 +42,54 @@ export default props => {
 const styles = StyleSheet.create({
   container: {
     flex:1,
-    backgroundColor: '#ffff',
+    backgroundColor: '#0000ff',
     
   },
   fisthbox:{
     flex:1,
     backgroundColor: '#0000ff',
     alignItems:'center',
+    
   },
 
   imgbox:{
     flex: 3,
     flexDirection: 'row',
     flexWrap: 'wrap',
-    borderTopLeftRadius: 50,
-    borderTopRightRadius: 50,
     paddingStart: '5%',
     paddingEnd: '5%',
     marginTop: 50,
     justifyContent: 'center',
+    borderTopLeftRadius: 30,
+    borderTopRightRadius: 30,
+    backgroundColor:'#ffff',
   },
   menuBox: {
-    backgroundColor: '#DCDCDC',
+    backgroundColor: '#f00a0a',
     width: 130,
     height: 130,
     alignItems: 'center',
     justifyContent: 'center',
     margin: 12,
-    paddingTop: 40,
+    paddingTop: 20,
     flexDirection: 'column',
     flexWrap: 'wrap',
     alignContent: 'center',
+    borderRadius: 50,
+    marginTop: 70,
   },
   icon: {
-    width: 30,
-    height: 30,
+    width: 50,
+    height: 50,
+    
   },
   info: {
     fontSize: 22,
-    color: '#696969',
+    color: '#f7f7f7',
   },
   title:{
     fontSize: 20,
-    color: '#ffff',
+    color: '#fff',
     fontWeight: 'bold',
     marginTop: 40,
     marginBottom: 12,

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, Image, StyleSheet, TouchableOpacity, Alert } from 'react-native';
 
 export default props => {
     const [podologo, setPodogo] = useState({})
@@ -25,7 +25,11 @@ export default props => {
             
             <TouchableOpacity style={styles.button} onPress={() => props.navigation.navigate('login')}>
                     <Text style={styles.buttonText}>Editar</Text>
-                </TouchableOpacity>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.buttondel} onPress={() => Alert.alert('Pedido deletado com sucesso!')}>
+                    <Text style={styles.buttonText}>Deletar</Text>
+            </TouchableOpacity>
+
         </View>
     );
 };
@@ -74,6 +78,19 @@ const styles = StyleSheet.create({
         fontSize: 18,
         color: '#ffff',
         fontWeight: 'bold'
+    },
+
+    buttondel:{
+        position: 'absolute',
+        backgroundColor: '#f00a0a',
+        borderRadius: 50,
+        paddingVertical: 8,
+        width: '60%',
+        alignSelf: 'center',
+        bottom: '20%',
+        alignItems: 'center',
+        justifyContent: 'center'
+
     },
 
 });

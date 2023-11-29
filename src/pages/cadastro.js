@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, Image, TextInput, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, Image, TextInput, StyleSheet, TouchableOpacity, Alert } from 'react-native';
 
 
 export default props => {
@@ -51,7 +51,7 @@ export default props => {
                 
             </View>
             <View style={styles.containerFom}>
-                <TouchableOpacity style={styles.button} onPress={() => props.navigation.navigate('login')}>
+                <TouchableOpacity style={styles.button} onPress={() => Alert.alert('Pedido salvo com sucesso!')}>
                     <Text style={styles.buttonText}>Salvar</Text>
                 </TouchableOpacity>
             </View>
@@ -101,6 +101,7 @@ const styles = StyleSheet.create({
         bottom: '15%',
         alignItems: 'center',
         justifyContent: 'center',
+        marginBottom: 10,
     },
     buttonText:{
         fontSize: 18,
