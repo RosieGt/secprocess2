@@ -1,12 +1,43 @@
 import React, { useState } from 'react';
-import { View, Text, Image, TextInput, TouchableOpacity } from 'react-native';
+import { View, Text, Image, TextInput, TouchableOpacity, KeyboardAvoidingView, Platform  } from 'react-native';
+import { initializeApp } from "firebase/app";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { useAsyncStorage } from '@react-native-async-storage/async-storage';
+
+const firebaseConfig = {
+  apiKey: "AIzaSyC3DdUUqWHVyUZZUgN3Wj2izn8kOi0KBX4",
+  authDomain: "secprocess-27fc7.firebaseapp.com",
+  projectId: "secprocess-27fc7",
+  storageBucket: "secprocess-27fc7.appspot.com",
+  messagingSenderId: "1050541478203",
+  appId: "1:1050541478203:web:e2e90357f56f30dc6ce71e"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
 
 export default props => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  const loginFirebase = () => {  
+  const auth = getAuth();
+    signInWithEmailAndPassword(auth, email, password)
+    .then((UserCredential) => {
+
+      const user = UserCredential.user;
+      props.navigation.navigate("hall", {idUser: user.uid})
+
+    })
+    .catch((error) => {
+      const erroCode = error.code;
+      const erroMessage = error.message;
+    });
+
+  }
+
   return (
-    <View style={styles.container}>
+    <KeyboardAvoidingView style={styles.container}>
       <View style={styles.logoContainer}>
         <Image
           source={{uri: 'assets/book-lover.png' }}
@@ -37,12 +68,12 @@ export default props => {
               secureTextEntry
             />
           </View>
-          <TouchableOpacity style={styles.button} onPress={() => props.navigation.navigate('hall')}>
+          <TouchableOpacity style={styles.button} onPress={loginFirebase}>
             <Text style={styles.buttonText}>Login</Text>
          </TouchableOpacity>
         </View>
       </View>
-    </View>
+    </KeyboardAvoidingView>
   );
 };
 

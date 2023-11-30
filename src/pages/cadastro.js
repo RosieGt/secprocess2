@@ -47,14 +47,14 @@ export default props => {
                     placeholder="Observações"
                     
                 />
-
+                <View style={styles.containerFom}>
+                    <TouchableOpacity style={styles.button} onPress={() => Alert.alert('Pedido salvo com sucesso!')}>
+                        <Text style={styles.buttonText}>Salvar</Text>
+                    </TouchableOpacity>
+                </View>
                 
             </View>
-            <View style={styles.containerFom}>
-                <TouchableOpacity style={styles.button} onPress={() => Alert.alert('Pedido salvo com sucesso!')}>
-                    <Text style={styles.buttonText}>Salvar</Text>
-                </TouchableOpacity>
-            </View>
+            
             
 
            

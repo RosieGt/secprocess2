@@ -72,7 +72,8 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         bottom: '30%',
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        
     },
     buttonText:{
         fontSize: 18,

@@ -11,7 +11,7 @@ export default props => {
       </View>
 
       <View style={styles.imgbox}>
-        <TouchableOpacity style={styles.menuBox} onPress={() => { props.navigation.navigate('lista')}}>
+        <TouchableOpacity style={[styles.menuBox, styles.shadowProp]} onPress={() => { props.navigation.navigate('lista')}}>
           <Image
             style={styles.icon}
             source={require( '../assets/logo_secprocess.png' )}
@@ -63,9 +63,10 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
     backgroundColor:'#ffff',
+    
   },
   menuBox: {
-    backgroundColor: '#f00a0a',
+    backgroundColor: '#2960da',
     width: 130,
     height: 130,
     alignItems: 'center',
@@ -77,6 +78,7 @@ const styles = StyleSheet.create({
     alignContent: 'center',
     borderRadius: 50,
     marginTop: 70,
+    
   },
   icon: {
     width: 50,
@@ -101,4 +103,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems:'center',
 },
+
+  shadowProp:{
+    shadowColor: '#171717',
+    shadowOffset: {width: -2, height: 4},
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
+},
+
 })
