@@ -1,20 +1,36 @@
 import React, { useState } from "react";
 import { Text, StyleSheet, View, FlatList, Image, TextInput, TouchableOpacity } from "react-native";
+import { initializeApp } from "firebase/app";
+import { collection, getFirestore } from "firebase/firestore";
+
+const firebaseConfig = {
+    apiKey: "AIzaSyDvRMB7XZOornuvB6d2mHAQlUkLExk1EZ0",
+    authDomain: "secprocess2.firebaseapp.com",
+    projectId: "secprocess2",
+    storageBucket: "secprocess2.appspot.com",
+    messagingSenderId: "599775011618",
+    appId: "1:599775011618:web:2b989dcb1ef1c431b0fb7b"
+  };
+  
+  // Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
 export default props => {
+    const [pedido, setPedido] = useState([]);
+    const listaFirebase = async () => {
+    const querySnapshot = await getDocs(collection(db, "Pedidos"));
+    querySnapshot.forEach((doc) => {
+    list.push({...doc.data(), id: doc.id}), setPedido(list);
+    console.log(`${doc.id} => ${doc.data()}`);
 
-    const [podogos, setPodogos] = useState([])
-
-    fetch('https://rosiecruz13.pythonanywhere.com/api/podoguia/')
-        .then(data => data.json())
-        .then(json => setPodogos(json.results))
-        .catch(error => console.warn(error))
+}, [])  
 
     const ProductCard = ({ item }) => {
         return (
             <TouchableOpacity onPress={() => { props.navigation.navigate('detalhes', { id: item.id }) }}>
                 <View style={styles.productCard}>
-                    <Image source={{ uri: item.avatar }} style={styles.productImage} />
+                    
                     <View style={styles.productInfo}>
                         <Text style={styles.productName}>{item.nome}</Text>
                         <Text style={styles.productDescription}>{item.nome}</Text>
@@ -28,15 +44,15 @@ export default props => {
         <View style={styles.container}>
             <TextInput style={styles.search} placeholder="Pesquise aqui..." />
             <FlatList
-                data={podogos}
+                data={pedido}
                 style={styles.productList}
                 renderItem={ProductCard}
-                keyExtractor={(item) => item.id.toString()}
+                keyExtractor={(item) => item.id.data()}
                 contentContainerStyle={{ paddingHorizontal: 16, paddingBottom: 20 }}
             />
         </View>
     )
-}
+}}
 
 const styles = StyleSheet.create({
     container: {
